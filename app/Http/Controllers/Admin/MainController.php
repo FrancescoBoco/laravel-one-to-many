@@ -7,13 +7,10 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 
-class DashboardController extends Controller
+class MainController extends Controller
 {
    public function dashboard()
    {
-
-    $user = Auth::user();
-    $userId = Auth::id();
 
     return view('admin.dashboard');
    }

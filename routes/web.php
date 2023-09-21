@@ -24,9 +24,13 @@ Route::get('/',[MainController::class, 'index'])->name('home');
 
 
 Route::get('/admin/dashboard', [AdminMainController::class, 'dashboard'])
-    ->middleware(['auth', 'verified'])->name('admin.dashboard');
-
+    ->middleware(['auth', 'verified'])
+    ->name('admin.dashboard');
     
+Route::resource('/admin/posts', AdminMainController::class);
+
+
+require __DIR__.'/auth.php';
 
 
 // Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(function(){
@@ -36,4 +40,3 @@ Route::get('/admin/dashboard', [AdminMainController::class, 'dashboard'])
 // });
 
 
-require __DIR__.'/auth.php';
