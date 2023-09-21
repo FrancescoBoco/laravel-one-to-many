@@ -3,8 +3,11 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 // controller
+use App\Http\Controllers\MainController;
 
-use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\MainController as AdminMainController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,19 +18,22 @@ use App\Http\Controllers\Admin\DashboardController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+// fa riferimento al Controller MainController che allinterno ha la funzione index('wellcome) 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[MainController::class, 'index'])->name('home');
 
-Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(function(){
+
+Route::get('/admin/dashboard', [AdminMainController::class, 'dashboard'])
+    ->middleware(['auth', 'verified'])->name('admin.dashboard');
+
     
-    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard'); 
-});
 
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+// Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(function(){
+
+//     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard'); 
+
+// });
+
 
 require __DIR__.'/auth.php';

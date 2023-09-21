@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
-   public function dashboard(){
+   public function dashboard()
+   {
 
     $user = Auth::user();
     $userId = Auth::id();
