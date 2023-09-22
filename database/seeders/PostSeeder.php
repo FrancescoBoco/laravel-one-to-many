@@ -28,9 +28,6 @@ class PostSeeder extends Seeder
             $newData->title = $faker->title;
             $newData->description = $faker->description;
             $newData->age = $faker->age;
-                
-
-            
         }
     }
 }

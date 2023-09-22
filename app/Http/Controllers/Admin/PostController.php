@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 // Models 
 use App\Models\Post;
 
-class PostControlloer extends Controller
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.

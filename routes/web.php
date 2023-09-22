@@ -7,6 +7,7 @@ use App\Http\Controllers\MainController;
 
 use App\Http\Controllers\Admin\MainController as AdminMainController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
+use App\Http\Controllers\Admin\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,9 +27,14 @@ Route::get('/',[MainController::class, 'index'])->name('home');
 Route::get('/admin/dashboard', [AdminMainController::class, 'dashboard'])
     ->middleware(['auth', 'verified'])
     ->name('admin.dashboard');
-    
-Route::resource('/admin/posts', AdminMainController::class);
+   
+Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function(){
 
+    Route::resource('posts', PostController::class);
+
+});
+
+// si possono creare dei macro gruppi, cambiando name e prefix 
 
 require __DIR__.'/auth.php';
 
