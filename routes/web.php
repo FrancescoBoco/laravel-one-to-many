@@ -27,7 +27,7 @@ Route::get('/',[MainController::class, 'index'])->name('home');
 Route::get('/admin/dashboard', [AdminMainController::class, 'dashboard'])
     ->middleware(['auth', 'verified'])
     ->name('admin.dashboard');
-   
+   // HO tolto il middleweare, non riuscivo a fare il log-in 
 Route::prefix('admin')->name('admin.')->group(function(){
 
     Route::resource('posts', PostController::class);
