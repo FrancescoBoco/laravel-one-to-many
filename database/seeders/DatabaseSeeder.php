@@ -14,7 +14,8 @@ class DatabaseSeeder extends Seeder
     {
         // mi richiama tutti i seeder che ho qui dentro 
        $this->call([
-        PostSeeder::class
+        PostSeeder::class,
+        UsersSeeder::class
        ]);                   
     }
 }

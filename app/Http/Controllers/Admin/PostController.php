@@ -68,7 +68,7 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
-        $formDate = $request->validate();
+        $formDate = $request->validated();
 
         $post->update([
             'title' => $formDate['title'],
